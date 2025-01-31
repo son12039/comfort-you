@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { signup, login } from "../api/board";
 const Main = () => {
   const [posts, setPosts] = useState([]);
 
@@ -8,7 +8,13 @@ const Main = () => {
   useEffect(() => {
     axios.get("/api/posts").then((response) => setPosts(response.data));
   }, []);
-
+  const click = () => {
+    const aa = {
+      a: "Korean",
+      id: "id",
+    };
+    signup(aa);
+  };
   return (
     <div>
       <h1>게시판</h1>
@@ -34,6 +40,7 @@ const Main = () => {
           ))}
         </tbody>
       </table>
+      <button onClick={click}>눌렁</button>
     </div>
   );
 };
